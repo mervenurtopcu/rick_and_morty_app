@@ -1,12 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-
 import '../models/info_model.dart';
 
 abstract class IGetDataService {
   static final Dio _dio = Dio();
 
-  Future<List<Map<String, dynamic>>> getAllEntities(String url) async {
+  Future<List<Map<String, dynamic>>> getAllDatas(String url) async {
     try {
       List<Map<String, dynamic>> allEntities = [];
       String? nextUrl = url;

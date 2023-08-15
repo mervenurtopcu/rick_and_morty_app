@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
-import '../constants/color_constants.dart';
+import 'package:rick_and_morty_app/product/constants/index.dart';
 import '../models/episode_model.dart';
 import '../theme/theme_provider.dart';
 
@@ -34,7 +34,7 @@ class EpisodeCard extends StatelessWidget {
               Expanded(
                   flex: 1,
                   child: Text(
-                    "Episode: ",
+                   StringConstants.episode,
                     style: Theme.of(context)
                         .textTheme
                         .bodySmall

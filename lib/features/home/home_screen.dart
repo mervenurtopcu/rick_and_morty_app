@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lottie/lottie.dart';
+import 'package:rick_and_morty_app/features/search/search_delegate.dart';
 import 'package:rick_and_morty_app/product/extensions/lottie_extensions.dart';
-import 'package:rick_and_morty_app/product/services/character/character.dart';
-import 'package:rick_and_morty_app/product/services/episodes/episodes.dart';
-import 'package:rick_and_morty_app/product/services/location/location.dart';
+import 'package:rick_and_morty_app/product/services/character/character_service.dart';
+import 'package:rick_and_morty_app/product/services/episodes/episode_service.dart';
+import 'package:rick_and_morty_app/product/services/location/location_service.dart';
 import '../../product/constants/index.dart';
 import '../../product/enums/png_enums.dart';
 import '../../product/models/index.dart';
-import '../../product/theme/theme_provider.dart';
+import '../../product/theme/index.dart';
 import '../../product/widgets/index.dart';
 
 
@@ -20,6 +21,9 @@ class HomeScreen extends ConsumerStatefulWidget {
 }
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
+  final futureCharacters = CharacterService().getAllCharacters();
+  final futureLocations = LocationService().getAllLocations();
+  final futureEpisodes = EpisodeService().getAllEpisodes();
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -50,6 +54,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       _showModalBottomSheet(context);
                     },
                   ),
+            IconButton(
+                onPressed: () {
+                  showSearch(context: context, delegate: CharacterSearch());
+                },
+                icon:  Icon(
+                  Icons.search,
+                  color:ref.watch(themeProvider).isDarkTheme ? ColorConstants.white : ColorConstants.black,
+                ))
           ],
           bottom: const TabBar(
             tabs: [
@@ -70,7 +82,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: FutureBuilder<List<Character>>(
-                future: CharacterService().getAllCharacters(),
+                future: futureCharacters,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return Center(
@@ -80,7 +92,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       height: MediaQuery.sizeOf(context).height * 0.3,
                     ));
                   } else if (snapshot.hasError || snapshot.data == null) {
-                    return const Center(child: Text('Error Loading Data.'));
+                    return const Center(child: Text(StringConstants.errorMessage));
                   } else {
                     var characters = snapshot.data!;
                     return ListView.builder(
@@ -100,12 +112,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: FutureBuilder<List<LocationModel>>(
-                future: LocationService().getAllLocations(),
+                future:futureLocations,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const Center(child: CircularProgressIndicator());
                   } else if (snapshot.hasError || snapshot.data == null) {
-                    return const Center(child: Text('Error Loading Data.'));
+                    return const Center(child: Text(StringConstants.errorMessage));
                   } else {
                     var locations = snapshot.data!;
                     return ListView.builder(
@@ -122,12 +134,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: FutureBuilder<List<Episode>>(
-                future: EpisodeService().getAllEpisodes(),
+                future:futureEpisodes,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const Center(child: CircularProgressIndicator());
                   } else if (snapshot.hasError || snapshot.data == null) {
-                    return const Center(child: Text('Error Loading Data.'));
+                    return const Center(child: Text(StringConstants.errorMessage));
                   } else {
                     var episodes = snapshot.data!;
                     return ListView.builder(

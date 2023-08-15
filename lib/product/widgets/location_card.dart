@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../constants/color_constants.dart';
+import '../constants/string_constants.dart';
 import '../models/location_model.dart';
 import '../theme/theme_provider.dart';
 
@@ -44,7 +45,7 @@ class LocationCard extends StatelessWidget {
                   children: [
                     Expanded(
                         child: Text(
-                          "Dimension: ",
+                          StringConstants.dimension,
                           style: Theme.of(context)
                               .textTheme
                               .bodySmall
@@ -76,7 +77,7 @@ class LocationCard extends StatelessWidget {
                     Expanded(
                         flex: 1,
                         child: Text(
-                          "Type: ",
+                          StringConstants.type,
                           style: Theme.of(context)
                               .textTheme
                               .bodySmall
