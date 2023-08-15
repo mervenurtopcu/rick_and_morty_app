@@ -1,6 +1,9 @@
 import 'package:shared_preferences/shared_preferences.dart';
 enum SharedKeys{
   isDarkMode,
+  characterList,
+  locationList,
+  episodeList,
 }
 
 class SharedManager {

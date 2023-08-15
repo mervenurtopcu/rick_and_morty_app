@@ -23,5 +23,13 @@ class LightTheme {
         statusBarIconBrightness: Brightness.dark,
       ),
     ),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      selectedItemColor: ColorConstants.green,
+      unselectedItemColor: ColorConstants.grey,
+    ),
+    tabBarTheme: const TabBarTheme(
+      labelColor: ColorConstants.green,
+      indicatorColor: ColorConstants.green,
+    ),
   );
 }
