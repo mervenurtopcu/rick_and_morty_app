@@ -23,5 +23,17 @@ class DarkTheme {
         statusBarIconBrightness: Brightness.light,
       ),
     ),
+    switchTheme:  SwitchThemeData(
+      thumbColor: MaterialStateProperty.all<Color>(ColorConstants.green),
+      trackColor: MaterialStateProperty.all<Color>(ColorConstants.black),
+    ),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      selectedItemColor: ColorConstants.green,
+      unselectedItemColor: ColorConstants.grey,
+    ),
+    tabBarTheme: const TabBarTheme(
+      labelColor: ColorConstants.green,
+      indicatorColor: ColorConstants.green,
+    ),
   );
 }
