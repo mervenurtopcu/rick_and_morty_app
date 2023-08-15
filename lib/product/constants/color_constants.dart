@@ -8,6 +8,7 @@ class ColorConstants {
   static const Color grey = Colors.grey;
   static const Color red = Colors.red;
   static const Color green = Colors.green;
+  static const Color blueGrey = Colors.blueGrey;
   static const Color yellowColor = Colors.yellow;
   static const Color loginBackground = Color(0xFF2c2b3f);
   static const Color loginTextField = Color(0xff39324d);

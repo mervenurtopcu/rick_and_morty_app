@@ -17,17 +17,17 @@ class CharacterService extends IGetDataService {
     return List<Character>.from(objects.map((x) => Character.fromJson(x)));
   }
 
-  Future<List<Character>> getCharacterByName(String name) async {
+  Future<List<Character>> getCharactersByName(String name) async {
     List<Map<String, dynamic>> objects = await super.getAllDatas(
         '${AppConstants.baseURL}${AppConstants.characterEndpoint}?name=$name');
 
     return List<Character>.from(objects.map((x) => Character.fromJson(x)));
   }
 
-  Future<List<Character>> getCharacterBySpecies(String species) async {
+  Future<Character> getCharacterByName(String name) async {
     List<Map<String, dynamic>> objects = await super.getAllDatas(
-        '${AppConstants.baseURL}${AppConstants.characterEndpoint}?species=$species');
-
-    return List<Character>.from(objects.map((x) => Character.fromJson(x)));
+        '${AppConstants.baseURL}${AppConstants.characterEndpoint}?name=$name');
+    return Character.fromJson(objects.first);
   }
+
 }
