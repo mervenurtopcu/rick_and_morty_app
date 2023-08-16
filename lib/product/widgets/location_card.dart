@@ -10,12 +10,10 @@ class LocationCard extends StatelessWidget {
     super.key,
     required this.location,
     required this.ref,
-
   });
 
   final LocationModel location;
   final WidgetRef ref;
-
 
   @override
   Widget build(BuildContext context) {
@@ -31,41 +29,32 @@ class LocationCard extends StatelessWidget {
         subtitle: Padding(
           padding: const EdgeInsets.only(top: 8.0),
           child: Row(
-            mainAxisAlignment:
-            MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
-                flex: 1,
                 child: Row(
-                  mainAxisAlignment:
-                  MainAxisAlignment.start,
-                  crossAxisAlignment:
-                  CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
+                        flex: 1,
                         child: Text(
                           StringConstants.dimension,
                           style: Theme.of(context)
                               .textTheme
                               .bodySmall
                               ?.copyWith(
-                              color: ref
-                                  .watch(themeProvider)
-                                  .isDarkTheme
-                                  ? ColorConstants.white
-                                  : ColorConstants.black),
+                                  color: ref.watch(themeProvider).isDarkTheme
+                                      ? ColorConstants.white
+                                      : ColorConstants.black),
                         )),
                     Expanded(
                         child: Text(
-                          location.dimension,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodySmall
-                              ?.copyWith(
-                              color: ColorConstants
-                                  .loginSubtitle),
-                        )),
+                      location.dimension,
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodySmall
+                          ?.copyWith(color: ColorConstants.loginSubtitle),
+                    )),
                   ],
                 ),
               ),
@@ -75,45 +64,26 @@ class LocationCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Expanded(
-                        flex: 1,
                         child: Text(
-                          StringConstants.type,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodySmall
-                              ?.copyWith(
-                              color: ref
-                                  .watch(
-                                  themeProvider)
-                                  .isDarkTheme
-                                  ? ColorConstants.white
-                                  : ColorConstants
-                                  .black),
-                        )),
+                      StringConstants.type,
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          color: ref.watch(themeProvider).isDarkTheme
+                              ? ColorConstants.white
+                              : ColorConstants.black),
+                    )),
                     Expanded(
-                        flex: 2,
                         child: Text(
-                          location.type,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodySmall
-                              ?.copyWith(
-                              color: ColorConstants
-                                  .loginSubtitle),
-                        )),
+                      location.type,
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodySmall
+                          ?.copyWith(color: ColorConstants.loginSubtitle),
+                    )),
                   ],
                 ),
               ),
             ],
           ),
-        ),
-        trailing: IconButton(
-          icon: const Icon(
-            Icons.arrow_forward_ios_outlined,
-            size: 12,
-          ),
-          onPressed: () {
-          },
         ),
       ),
     );

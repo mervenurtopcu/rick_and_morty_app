@@ -126,7 +126,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 future: futureLocations,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Center(child: CircularProgressIndicator());
+                    return Center(
+                        child: Lottie.asset(
+                          LottieItems.loading.lottiePath,
+                          width: MediaQuery.sizeOf(context).width * 0.5,
+                          height: MediaQuery.sizeOf(context).height * 0.3,
+                        ));
                   } else if (snapshot.hasError || snapshot.data == null) {
                     return const Center(
                         child: Text(StringConstants.errorMessage));
@@ -149,7 +154,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 future: futureEpisodes,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Center(child: CircularProgressIndicator());
+                    return Center(
+                        child: Lottie.asset(
+                          LottieItems.loading.lottiePath,
+                          width: MediaQuery.sizeOf(context).width * 0.5,
+                          height: MediaQuery.sizeOf(context).height * 0.3,
+                        ));
                   } else if (snapshot.hasError || snapshot.data == null) {
                     return const Center(
                         child: Text(StringConstants.errorMessage));
@@ -251,7 +261,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             context,
             MaterialPageRoute(
               builder: (context) => CharacterDetailScreen(
-                  character: ref.watch(homeScreenProvider).getCharacter),
+                  character: ref.watch(homeScreenProvider).getCharacter),fullscreenDialog: true
             ));
       },
     );

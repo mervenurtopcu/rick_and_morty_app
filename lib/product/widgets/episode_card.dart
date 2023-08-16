@@ -59,13 +59,6 @@ class EpisodeCard extends StatelessWidget {
             ],
           ),
         ),
-        trailing: IconButton(
-          icon: const Icon(
-            Icons.arrow_forward_ios_outlined,
-            size: 12,
-          ),
-          onPressed: () {},
-        ),
       ),
     );
   }
