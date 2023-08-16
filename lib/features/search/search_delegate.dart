@@ -51,7 +51,7 @@ class CharacterSearch extends SearchDelegate<String> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => CharacterDetailScreen(
-                                  character: snapshot.data!)));
+                                  character: snapshot.data!),fullscreenDialog: true));
                     },
                     leading: Image.network(
                       snapshot.data?.image ?? '',
