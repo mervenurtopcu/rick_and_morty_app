@@ -1,7 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty_app/features/character_detail/character_detail_screen.dart';
-import 'package:rick_and_morty_app/features/home/home_screen.dart';
 import 'package:rick_and_morty_app/features/splash/splash_screen.dart';
 import 'package:rick_and_morty_app/product/constants/app_constants.dart';
 import 'package:rick_and_morty_app/product/global/utils.dart';

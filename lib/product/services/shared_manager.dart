@@ -1,12 +1,11 @@
 import 'package:shared_preferences/shared_preferences.dart';
-enum SharedKeys{
+
+enum SharedKeys {
   isDarkMode,
   characterList,
-
 }
 
 class SharedManager {
-
   static late SharedPreferences _prefs;
 
   // call this method from initState() function of mainApp().
@@ -40,10 +39,12 @@ class SharedManager {
 
   static String? getString(SharedKeys key) => _prefs.getString(key.name);
 
-  static List<String>? getStringList(SharedKeys key) => _prefs.getStringList(key.name);
+  static List<String>? getStringList(SharedKeys key) =>
+      _prefs.getStringList(key.name);
 
   //deletes..
-  static Future<bool> remove(SharedKeys key) async => await _prefs.remove(key.name);
+  static Future<bool> remove(SharedKeys key) async =>
+      await _prefs.remove(key.name);
 
   static Future<bool> clear() async => await _prefs.clear();
 }

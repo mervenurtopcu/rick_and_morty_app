@@ -53,7 +53,7 @@ class LocationCard extends StatelessWidget {
                       style: Theme.of(context)
                           .textTheme
                           .bodySmall
-                          ?.copyWith(color: ColorConstants.loginSubtitle),
+                          ?.copyWith(color: ColorConstants.darkGray),
                     )),
                   ],
                 ),
@@ -77,7 +77,7 @@ class LocationCard extends StatelessWidget {
                       style: Theme.of(context)
                           .textTheme
                           .bodySmall
-                          ?.copyWith(color: ColorConstants.loginSubtitle),
+                          ?.copyWith(color: ColorConstants.darkGray),
                     )),
                   ],
                 ),

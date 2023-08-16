@@ -8,7 +8,7 @@ import 'package:rick_and_morty_app/product/services/character/character_service.
 import 'package:rick_and_morty_app/product/services/episodes/episode_service.dart';
 import 'package:rick_and_morty_app/product/services/location/location_service.dart';
 import '../../product/constants/index.dart';
-import '../../product/enums/png_enums.dart';
+import '../../product/enums/index.dart';
 import '../../product/models/index.dart';
 import '../../product/theme/index.dart';
 import '../../product/widgets/index.dart';

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../features/character_detail/character_detail_screen.dart';
-import '../constants/color_constants.dart';
-import '../constants/string_constants.dart';
+import '../constants/index.dart';
 import '../models/character_model.dart';
 import '../theme/theme_provider.dart';
 
@@ -76,8 +75,7 @@ class CharacterContainer extends StatelessWidget {
                               style: Theme.of(context)
                                   .textTheme
                                   .bodySmall
-                                  ?.copyWith(
-                                      color: ColorConstants.loginSubtitle),
+                                  ?.copyWith(color: ColorConstants.darkGray),
                             )),
                         Expanded(
                           flex: 2,
@@ -107,8 +105,7 @@ class CharacterContainer extends StatelessWidget {
                                         .textTheme
                                         .bodySmall
                                         ?.copyWith(
-                                            color:
-                                                ColorConstants.loginSubtitle),
+                                            color: ColorConstants.darkGray),
                                   )),
                             ],
                           ),

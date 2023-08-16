@@ -38,7 +38,7 @@ class CharacterSearch extends SearchDelegate<String> {
             default:
               if (snapshot.hasError) {
                 return Container(
-                  color: Colors.black,
+                  color: ColorConstants.black,
                   alignment: Alignment.center,
                   child: const Text(
                     StringConstants.errorMessage,
@@ -47,9 +47,10 @@ class CharacterSearch extends SearchDelegate<String> {
                 );
               } else {
                 return Card(
-                  color: Colors.grey.withOpacity(0.1),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                   margin: const EdgeInsets.all(8.0),
-                  elevation: 0.5,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: ListTile(
@@ -85,7 +86,7 @@ class CharacterSearch extends SearchDelegate<String> {
 
   @override
   Widget buildSuggestions(BuildContext context) => Container(
-        color: Colors.transparent,
+        color: ColorConstants.transparent,
         child: FutureBuilder<List<Character>>(
           future: futureCharacterService.getCharactersByName(query),
           builder: (context, snapshot) {
@@ -126,40 +127,33 @@ class CharacterSearch extends SearchDelegate<String> {
           final queryText = suggestion.name.substring(0, query.length);
           final remainingText = suggestion.name.substring(query.length);
 
-          return Card(
-            color: Colors.grey.withOpacity(0.1),
-            margin: const EdgeInsets.all(8.0),
-            elevation: 0.5,
-            child: ListTile(
-              onTap: () {
-                query = suggestion.name;
-                showResults(context);
-              },
-              leading: Image.network(
-                suggestion.image,
-                width: 60,
-                errorBuilder: (context, error, stackTrace) =>
-                    Image.asset(PngEnums.user.toPng),
-
-              ),
-              title: RichText(
-                text: TextSpan(
-                  text: queryText,
-                  style: const TextStyle(
-                    color: ColorConstants.blueGrey,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                  ),
-                  children: [
-                    TextSpan(
-                      text: remainingText,
-                      style: const TextStyle(
-                        color: ColorConstants.grey,
-                        fontSize: 18,
-                      ),
-                    ),
-                  ],
+          return ListTile(
+            onTap: () {
+              query = suggestion.name;
+              showResults(context);
+            },
+            leading: Image.network(
+              suggestion.image,
+              width: 50,
+              height: 50,
+            ),
+            title: RichText(
+              text: TextSpan(
+                text: queryText,
+                style: const TextStyle(
+                  color: ColorConstants.blueGrey,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
                 ),
+                children: [
+                  TextSpan(
+                    text: remainingText,
+                    style: const TextStyle(
+                      color: ColorConstants.grey,
+                      fontSize: 18,
+                    ),
+                  ),
+                ],
               ),
             ),
           );

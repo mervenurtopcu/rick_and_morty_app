@@ -9,12 +9,4 @@ class EpisodeService extends IGetDataService {
 
     return List<Episode>.from(objects.map((x) => Episode.fromJson(x)));
   }
-
-  Future<List<Episode>> getListOfEpisodes(List<int> ids) async {
-    List<Map<String, dynamic>> objects = await super.getAllDatas(
-        '${AppConstants.baseURL}${AppConstants.episodeEndpoint}/$ids');
-
-    return List<Episode>.from(objects.map((x) => Episode.fromJson(x)));
-  }
-
 }
