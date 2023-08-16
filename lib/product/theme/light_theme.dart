@@ -31,5 +31,8 @@ class LightTheme {
       labelColor: ColorConstants.green,
       indicatorColor: ColorConstants.green,
     ),
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
+      backgroundColor: ColorConstants.green,
+    ),
   );
 }

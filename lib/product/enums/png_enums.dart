@@ -1,5 +1,6 @@
 enum PngEnums {
-  header('ic_app_header')
+  header('ic_app_header'),
+  user('ic_user'),
   ;
 
   final String value;

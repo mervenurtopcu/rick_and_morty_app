@@ -23,7 +23,7 @@ class DarkTheme {
         statusBarIconBrightness: Brightness.light,
       ),
     ),
-    switchTheme:  SwitchThemeData(
+    switchTheme: SwitchThemeData(
       thumbColor: MaterialStateProperty.all<Color>(ColorConstants.green),
       trackColor: MaterialStateProperty.all<Color>(ColorConstants.black),
     ),
@@ -34,6 +34,9 @@ class DarkTheme {
     tabBarTheme: const TabBarTheme(
       labelColor: ColorConstants.green,
       indicatorColor: ColorConstants.green,
+    ),
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
+      backgroundColor: ColorConstants.green,
     ),
   );
 }

@@ -1,5 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
+import 'package:rick_and_morty_app/features/home/home_screen.dart';
+import 'package:rick_and_morty_app/product/enums/index.dart';
 import 'package:rick_and_morty_app/product/widgets/app_bar_general.dart';
 
 import '../../product/constants/color_constants.dart';
@@ -10,7 +12,7 @@ import '../../product/theme/theme_provider.dart';
 class CharacterDetailScreen extends ConsumerStatefulWidget {
   const CharacterDetailScreen({super.key, required this.character});
 
-  final Character character;
+  final Character? character;
 
   @override
   ConsumerState createState() => _CharacterDetailScreenState();
@@ -22,7 +24,7 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen> {
     return Scaffold(
         appBar: AppBarGeneral(
           ref: ref,
-          title: widget.character.name,
+          title: widget.character?.name ?? '',
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -38,7 +40,7 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen> {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(
-                            color: widget.character.status ==
+                            color: widget.character?.status ==
                                     StringConstants.statusAlive
                                 ? ColorConstants.green
                                 : ColorConstants.red,
@@ -47,8 +49,11 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen> {
                         ),
                         child: ClipOval(
                           child: Image.network(
-                            widget.character.image,
+                            widget.character?.image ?? '',
                             fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              return Image.asset(PngEnums.user.toPng);
+                            },
                           ),
                         )),
                   ),
@@ -56,12 +61,12 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen> {
                     width: MediaQuery.of(context).size.width * 0.1,
                     decoration: BoxDecoration(
                       color:
-                          widget.character.status == StringConstants.statusAlive
+                          widget.character?.status == StringConstants.statusAlive
                               ? ColorConstants.green
                               : ColorConstants.red,
                     ),
                     child: Text(
-                      widget.character.status,
+                      widget.character?.status ?? '',
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.titleSmall?.copyWith(
                             color: ColorConstants.white,
@@ -89,7 +94,7 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen> {
                     ),
                     CustomRow(
                       ref: ref,
-                      detail: widget.character.name,
+                      detail: widget.character?.name ?? '',
                       caption: StringConstants.name,
                     ),
                     SizedBox(
@@ -97,21 +102,21 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen> {
                     ),
                     CustomRow(
                         ref: ref,
-                        detail: widget.character.gender,
+                        detail: widget.character?.gender ?? '',
                         caption: StringConstants.gender),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.02,
                     ),
                     CustomRow(
                         ref: ref,
-                        detail: widget.character.species,
+                        detail: widget.character?.species ?? '',
                         caption: StringConstants.species),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.02,
                     ),
                     CustomRow(
                         ref: ref,
-                        detail: widget.character.status,
+                        detail: widget.character?.status ?? '',
                         caption: StringConstants.status),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 8.0, top: 16.0),
@@ -127,14 +132,14 @@ class _CharacterDetailScreenState extends ConsumerState<CharacterDetailScreen> {
                     ),
                     CustomRow(
                         ref: ref,
-                        detail: widget.character.location.name,
+                        detail: widget.character?.location.name ?? '',
                         caption: StringConstants.locationName),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.02,
                     ),
                     CustomRow(
                         ref: ref,
-                        detail: widget.character.origin.name,
+                        detail: widget.character?.origin.name ?? '',
                         caption: StringConstants.origin),
                   ],
                 ),

@@ -1,3 +1,7 @@
+import 'dart:io';
+
+import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:rick_and_morty_app/product/constants/app_constants.dart';
 import '../../models/character_model.dart';
 import '../get_data_service.dart';
@@ -30,4 +34,29 @@ class CharacterService extends IGetDataService {
     return Character.fromJson(objects.first);
   }
 
+  Future<Character> getCharacterById(int id) async {
+    try {
+      Response response = await Dio()
+          .get('${AppConstants.baseURL}${AppConstants.characterEndpoint}/$id');
+      if (response.statusCode == HttpStatus.ok) {
+        Character character = Character.fromJson(response.data);
+        return character;
+      }
+    } on DioException catch (e) {
+      if (e.response != null) {
+        if (kDebugMode) {
+          print(e.response!.data +
+              '\n' +
+              e.response!.headers +
+              '\n' +
+              e.response!.requestOptions);
+        }
+      } else {
+        if (kDebugMode) {
+          print(e.message);
+        }
+      }
+    }
+    throw Exception('Failed to load weather');
+  }
 }
