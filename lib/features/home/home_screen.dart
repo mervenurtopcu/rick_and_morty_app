@@ -8,7 +8,7 @@ import 'package:rick_and_morty_app/product/services/character/character_service.
 import 'package:rick_and_morty_app/product/services/episodes/episode_service.dart';
 import 'package:rick_and_morty_app/product/services/location/location_service.dart';
 import '../../product/constants/index.dart';
-import '../../product/enums/png_enums.dart';
+import '../../product/enums/index.dart';
 import '../../product/models/index.dart';
 import '../../product/theme/index.dart';
 import '../../product/widgets/index.dart';
@@ -126,7 +126,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 future: futureLocations,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Center(child: CircularProgressIndicator());
+                    return Center(
+                        child: Lottie.asset(
+                          LottieItems.loading.lottiePath,
+                          width: MediaQuery.sizeOf(context).width * 0.5,
+                          height: MediaQuery.sizeOf(context).height * 0.3,
+                        ));
                   } else if (snapshot.hasError || snapshot.data == null) {
                     return const Center(
                         child: Text(StringConstants.errorMessage));
@@ -149,7 +154,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 future: futureEpisodes,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Center(child: CircularProgressIndicator());
+                    return Center(
+                        child: Lottie.asset(
+                          LottieItems.loading.lottiePath,
+                          width: MediaQuery.sizeOf(context).width * 0.5,
+                          height: MediaQuery.sizeOf(context).height * 0.3,
+                        ));
                   } else if (snapshot.hasError || snapshot.data == null) {
                     return const Center(
                         child: Text(StringConstants.errorMessage));
@@ -251,7 +261,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             context,
             MaterialPageRoute(
               builder: (context) => CharacterDetailScreen(
-                  character: ref.watch(homeScreenProvider).getCharacter),
+                  character: ref.watch(homeScreenProvider).getCharacter),fullscreenDialog: true
             ));
       },
     );

@@ -34,14 +34,9 @@ class EpisodeCard extends StatelessWidget {
               Expanded(
                   flex: 1,
                   child: Text(
-                   StringConstants.episode,
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodySmall
-                        ?.copyWith(
-                        color: ref
-                            .watch(themeProvider)
-                            .isDarkTheme
+                    StringConstants.episode,
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: ref.watch(themeProvider).isDarkTheme
                             ? ColorConstants.white
                             : ColorConstants.black),
                   )),
@@ -52,19 +47,10 @@ class EpisodeCard extends StatelessWidget {
                     style: Theme.of(context)
                         .textTheme
                         .bodySmall
-                        ?.copyWith(
-                        color:
-                        ColorConstants.loginSubtitle),
+                        ?.copyWith(color: ColorConstants.darkGray),
                   )),
             ],
           ),
-        ),
-        trailing: IconButton(
-          icon: const Icon(
-            Icons.arrow_forward_ios_outlined,
-            size: 12,
-          ),
-          onPressed: () {},
         ),
       ),
     );

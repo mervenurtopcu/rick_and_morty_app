@@ -11,9 +11,9 @@ class LightTheme {
   ).copyWith(
     scaffoldBackgroundColor: ColorConstants.white,
     appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.transparent,
-      foregroundColor: Colors.black,
-      titleTextStyle:  TextStyle(
+      backgroundColor: ColorConstants.transparent,
+      foregroundColor: ColorConstants.black,
+      titleTextStyle: TextStyle(
         color: ColorConstants.black,
         fontSize: 20,
         fontWeight: FontWeight.w400,

@@ -7,14 +7,7 @@ class LocationService extends IGetDataService {
     List<Map<String, dynamic>> objects = await super
         .getAllDatas('${AppConstants.baseURL}${AppConstants.locationEndpoint}');
 
-    return List<LocationModel>.from(objects.map((x) => LocationModel.fromJson(x)));
+    return List<LocationModel>.from(
+        objects.map((x) => LocationModel.fromJson(x)));
   }
-
-  Future<List<LocationModel>> getListOfLocations(List<int> ids) async {
-    List<Map<String, dynamic>> objects = await super.getAllDatas(
-        '${AppConstants.baseURL}${AppConstants.locationEndpoint}/$ids');
-
-    return List<LocationModel>.from(objects.map((x) => LocationModel.fromJson(x)));
-  }
-
 }

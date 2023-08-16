@@ -1,6 +1,5 @@
 enum JpgEnums {
-  splash('ic_splash')
-  ;
+  splash('ic_splash');
 
   final String value;
 
